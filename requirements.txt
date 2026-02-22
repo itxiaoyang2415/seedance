@@ -1,0 +1,10 @@
+gradio>=4.0
+rembg>=2.0
+insightface>=0.7
+onnxruntime
+opencv-python>=4.8
+numpy
+Pillow
+
+# GPU加速（有NVIDIA显卡时安装，二选一）
+# pip install onnxruntime-gpu

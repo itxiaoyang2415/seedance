@@ -1,0 +1,8 @@
+venv/
+models/*.onnx
+temp/
+__pycache__/
+*.pyc
+.DS_Store
+app.log
+*.tmp
