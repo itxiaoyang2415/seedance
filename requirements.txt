@@ -5,6 +5,3 @@ onnxruntime
 opencv-python>=4.8
 numpy
 Pillow
-
-# GPU加速（有NVIDIA显卡时安装，二选一）
-# pip install onnxruntime-gpu

@@ -30,24 +30,14 @@ def _ensure_model_exists():
         )
 
 
-def _get_providers():
-    """自动检测GPU，优先使用CUDA"""
-    import onnxruntime as ort
-    available = ort.get_available_providers()
-    if "CUDAExecutionProvider" in available:
-        return ["CUDAExecutionProvider", "CPUExecutionProvider"]
-    return ["CPUExecutionProvider"]
-
-
 def init_face_analyzer() -> FaceAnalysis:
     """初始化人脸检测分析器（单例）"""
     global _face_analyzer
     if _face_analyzer is None:
-        providers = _get_providers()
-        _face_analyzer = FaceAnalysis(name="buffalo_l", providers=providers)
-        ctx_id = 0 if "CUDAExecutionProvider" in providers else -1
-        _face_analyzer.prepare(ctx_id=ctx_id, det_size=(640, 640))
-    return _face_analyzer
+        _face_analyzer = FaceAnalysis(
+            name="buffalo_l", providers=["CPUExecutionProvider"]
+        )
+        _face_analyzer.prepare(ctx_id=-1, det_size=(640, 640))
     return _face_analyzer
 
 
